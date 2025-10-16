@@ -1,12 +1,74 @@
 import streamlit as st
 
-# --- PAGE SETUP ---
-st.set_page_config(page_title="The Chapter of Us", page_icon="📖", layout="centered")
+# --- PAGE CONFIG ---
+st.set_page_config(page_title="The Chapter of Us", page_icon="📖", layout="wide")
+
+# --- CSS FOR ANIMATION & STYLE ---
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html, body, [class*="css"]  {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    color: #e75480;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+.chapter {
+    scroll-snap-align: start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.5s ease;
+    text-align: center;
+    padding: 2rem;
+}
+
+.chapter h2 {
+    color: #e75480;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.chapter p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    max-width: 700px;
+}
+
+img {
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 600px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # --- TITLE ---
-st.markdown("<h1 style='text-align:center; color:#e75480;'>📖 The Chapter of Us</h1>", unsafe_allow_html=True)
+st.markdown("<h1>📖 The Chapter of Us</h1>", unsafe_allow_html=True)
 
-# --- CHAPTERS DATA ---
+# --- CHAPTER DATA ---
 chapters = [
     ("💌 Chapter 1: When Strangers Cross Paths", "chapter1.jpg",
      "We met as complete strangers during university life. I didn’t expect anything special at that time. You were just another person I happened to meet, but somehow you caught my attention. I had a small crush on you, but it wasn’t love. It was just a simple feeling that made me smile whenever I saw you around."),
@@ -39,9 +101,14 @@ chapters = [
      "This isn’t the end of our story. It’s just another beginning for both of us. From being strangers to becoming each other’s person, we’ve come a long way together. There’s still so much more waiting for us ahead, and I’m excited to keep writing our chapters, one memory at a time.")
 ]
 
-# --- DISPLAY EACH CHAPTER ---
+# --- DISPLAY CONTENT ---
+st.markdown('<div class="main">', unsafe_allow_html=True)
 for title, image, text in chapters:
-    st.markdown(f"<h2 style='color:#e75480;'>{title}</h2>", unsafe_allow_html=True)
-    st.image(f"./{image}", use_container_width=True)
-    st.write(text)
-    st.markdown("---")
+    st.markdown(f"""
+        <div class="chapter">
+            <h2>{title}</h2>
+            <img src="{image}" alt="{title}">
+            <p>{text}</p>
+        </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
