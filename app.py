@@ -23,29 +23,19 @@ h1 {
 
 .chapter {
     scroll-snap-align: start;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     animation: fadeIn 1.2s ease;
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 1rem;
 }
 
 .chapter h2 {
     color: #e75480;
     font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.chapter img {
-    width: 70%;
-    max-width: 750px;
-    border-radius: 15px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    margin: 1.5rem 0;
-    pointer-events: none; /* disables click */
+    margin-bottom: 1.5rem;
 }
 
 .chapter p {
@@ -54,24 +44,25 @@ h1 {
     color: #333;
     max-width: 700px;
     text-align: justify;
+    margin-top: 1rem;
+}
+
+img {
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    margin-bottom: 1rem;
 }
 
 hr {
     border: none;
     border-top: 2px solid #f3a6c0;
-    width: 50%;
-    margin: 2rem auto;
+    width: 60%;
+    margin: 3rem auto;
 }
 
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
-}
-
-.main {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -113,14 +104,8 @@ chapters = [
 ]
 
 # --- DISPLAY CONTENT ---
-st.markdown('<div class="main">', unsafe_allow_html=True)
 for title, image, text in chapters:
-    st.markdown(f"""
-        <div class='chapter'>
-            <h2>{title}</h2>
-            <img src='{image}' alt='{title}'>
-            <p>{text}</p>
-        </div>
-        <hr>
-    """, unsafe_allow_html=True)
-st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='chapter'><h2>{title}</h2></div>", unsafe_allow_html=True)
+    st.image(image, width=750)  # larger, fixed width, not clickable
+    st.markdown(f"<p style='max-width:700px;margin:auto;text-align:justify;'>{text}</p>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
