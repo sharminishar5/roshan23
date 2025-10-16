@@ -82,7 +82,7 @@ st.markdown("<h1>📖 The Chapter of Us</h1>", unsafe_allow_html=True)
 # --- CHAPTER DATA ---
 chapters = [
     ("💌 Chapter 1: When Strangers Cross Paths", "chapter1.jpg", 
-     "The day we met — just two strangers crossing paths for the first time.",
+     "The day we met, just two strangers crossing paths for the first time.",
      "We met as complete strangers during university life. I didn’t expect anything special at that time. You were just another person I happened to meet, but somehow you caught my attention. I had a small crush on you, but it wasn’t love. It was just a simple feeling that made me smile whenever I saw you around."),
 
     ("🌸 Chapter 2: From Smiles to Friendship", "chapter2.jpg", 
@@ -98,7 +98,7 @@ chapters = [
      "One day, I decided to take the first step and confess my feelings to you. I was nervous but ready to be honest about how I felt. When you said yes, I couldn’t stop smiling. That was the beginning of our relationship. It wasn’t dramatic or planned, it was just real, and it felt right."),
 
     ("🍲 Chapter 5: Learning to Cook for You", "chapter5.jpg",
-     "Every meal was made with love — and a little nervousness.",
+     "Every meal was made with love and a little nervousness.",
      "After we got together, I started learning how to cook from scratch. I wanted to do something special for you even though I didn’t know much about cooking. You were always appreciative of my effort and enjoyed whatever I made. Those moments made me happy because I knew you valued every little thing I did."),
 
     ("⚽ Chapter 6: Your Football Moments", "chapter6.jpg",
