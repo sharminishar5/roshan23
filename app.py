@@ -11,6 +11,7 @@ st.markdown("""
 html, body, [class*="css"]  {
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
+    background-color: #fff5f8;
 }
 
 h1 {
@@ -22,7 +23,7 @@ h1 {
 
 .chapter {
     scroll-snap-align: start;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,11 +39,28 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.chapter img {
+    width: 70%;
+    max-width: 750px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    margin: 1.5rem 0;
+    pointer-events: none; /* disables click */
+}
+
 .chapter p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #333;
     max-width: 700px;
+    text-align: justify;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #f3a6c0;
+    width: 50%;
+    margin: 2rem auto;
 }
 
 @keyframes fadeIn {
@@ -97,9 +115,12 @@ chapters = [
 # --- DISPLAY CONTENT ---
 st.markdown('<div class="main">', unsafe_allow_html=True)
 for title, image, text in chapters:
-    with st.container():
-        st.markdown(f"<div class='chapter'><h2>{title}</h2></div>", unsafe_allow_html=True)
-        st.image(image, use_container_width=True)
-        st.write(text)
-        st.markdown("---")
+    st.markdown(f"""
+        <div class='chapter'>
+            <h2>{title}</h2>
+            <img src='{image}' alt='{title}'>
+            <p>{text}</p>
+        </div>
+        <hr>
+    """, unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
