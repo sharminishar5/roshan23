@@ -3,13 +3,14 @@ import streamlit as st
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="The Chapter of Us", page_icon="📖", layout="wide")
 
-# --- CSS FOR ANIMATION & STYLE ---
+# --- CSS STYLE ---
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html, body, [class*="css"]  {
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 h1 {
@@ -26,7 +27,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 1.5s ease;
+    animation: fadeIn 1.2s ease;
     text-align: center;
     padding: 2rem;
 }
@@ -40,16 +41,8 @@ h1 {
 .chapter p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #444;
+    color: #333;
     max-width: 700px;
-}
-
-img {
-    border-radius: 20px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-    width: 80%;
-    max-width: 600px;
 }
 
 @keyframes fadeIn {
@@ -104,11 +97,9 @@ chapters = [
 # --- DISPLAY CONTENT ---
 st.markdown('<div class="main">', unsafe_allow_html=True)
 for title, image, text in chapters:
-    st.markdown(f"""
-        <div class="chapter">
-            <h2>{title}</h2>
-            <img src="{image}" alt="{title}">
-            <p>{text}</p>
-        </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+    with st.container():
+        st.markdown(f"<div class='chapter'><h2>{title}</h2></div>", unsafe_allow_html=True)
+        st.image(image, use_container_width=True)
+        st.write(text)
+        st.markdown("---")
+st.markdown("</div>", unsafe_allow_html=True)
